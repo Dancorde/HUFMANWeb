@@ -5,6 +5,8 @@ const exphbs = require('express-handlebars');
 
 const app = express();
 
+const sequelize = require('./config/database');
+
 app.engine('hbs', exphbs({
   layoutsDir: 'views/layouts',
   defaultLayout: 'layout',
@@ -14,17 +16,27 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 
 // Routes imports
-const indexRoutes = require('./routes/index');
+const indexRoutes = require("./routes/index");
+const usersRoutes = require('./routes/index');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
-app.use('/', indexRoutes);
+app.use("/", indexRoutes);
+app.use('/users', usersRoutes);
 
 // 404 Error
 app.use('/', (req, res, next) => {
   res.status(404).render('404');
 });
 
-app.listen(3000);
+
+sequelize
+  .sync()
+  .then(() => {
+    app.listen(3000);
+  })
+  .catch(errr => {
+    console.log(err);
+  });
