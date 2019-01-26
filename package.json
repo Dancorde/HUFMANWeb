@@ -1,0 +1,28 @@
+{
+  "name": "hufmanweb",
+  "version": "1.0.0",
+  "description": "Web-based HAMSTER-enabled UV Fleet MANager",
+  "main": "app.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.42.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dancorde/HUFMANWeb.git"
+  },
+  "author": "Danilo Henrique Cordeiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dancorde/HUFMANWeb/issues"
+  },
+  "homepage": "https://github.com/Dancorde/HUFMANWeb#readme"
+}
