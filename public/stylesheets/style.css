@@ -1,0 +1,15 @@
+nav {
+  background-color: #6e9fef;
+}
+
+footer {
+  background-color: #6e9fef;
+}
+
+.nav-item {
+  color: white;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
