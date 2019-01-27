@@ -17,18 +17,20 @@ app.set('views', 'views');
 
 // Routes imports
 const indexRoutes = require("./routes/index");
-const usersRoutes = require('./routes/index');
+const authRoutes = require("./routes/auth");
+const usersRoutes = require('./routes/user');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.use("/", indexRoutes);
+app.use("/", authRoutes);
 app.use('/users', usersRoutes);
 
 // 404 Error
 app.use('/', (req, res, next) => {
-  res.status(404).render('404');
+  res.status(404).render("404", { pageTitle: "Page not Found" });
 });
 
 
