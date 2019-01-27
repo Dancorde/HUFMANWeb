@@ -17,7 +17,9 @@
     <ul class="navbar-nav ml-auto">
       {{#if isAuthenticated}}
       <li class="nav-item">
-        <a class="nav-link" href="/login">Sair</a>
+        <form action="/logout" method="post">
+          <button class="nav-link" type="submit">Sair</button>
+        </form>
       </li>
       {{else}}
       <li class="nav-item">

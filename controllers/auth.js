@@ -9,17 +9,24 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.postLogin = (req, res, next) => {
-  // username = req.body.username;
-  // password = req.body.password;
-  // User.findOne({where: {username: username}})
-  //   .then(user => {
-  //     match = bcrypt.compareSync(password, user.password);
-  //     res.send({user, match});
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-  
-  req.session.isLoggedIn = true;
-  res.redirect('/');
+  username = req.body.username;
+  password = req.body.password;
+  User.findOne({where: {username: username}})
+    .then(user => {
+      if(user){
+        req.session.isLoggedIn = true;
+        req.session.user = user;
+        res.redirect('/');
+      }
+      res.redirect('/login');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+exports.postLogout = (req, res, next) => {
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
 };
