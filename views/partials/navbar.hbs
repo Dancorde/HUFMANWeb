@@ -15,9 +15,15 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
+      {{#if isAuthenticated}}
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Sair</a>
+      </li>
+      {{else}}
       <li class="nav-item">
         <a class="nav-link" href="/login">Login</a>
       </li>
+      {{/if}}
     </ul>
   </div>
 </nav>

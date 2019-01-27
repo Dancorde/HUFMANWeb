@@ -28,13 +28,16 @@ const User = sequelize.define("user", {
       beforeCreate: (user) => {
         const salt = bcrypt.genSaltSync(12);
         user.password = bcrypt.hashSync(user.password, salt);
-      }
-    },
-    instanceMethods: {
-      validPassword: (password) => {
-        return bcrypt.compareSync(password, this.password);
+      },
+      beforeSave: (user) => {
+        const salt = bcrypt.genSaltSync(12);
+        user.password = bcrypt.hashSync(user.password, salt);
       }
     }
   });
+
+  User.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  }
 
 module.exports = User;
