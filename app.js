@@ -3,7 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 
@@ -42,7 +42,10 @@ app.use('/users', usersRoutes);
 
 // 404 Error
 app.use('/', (req, res, next) => {
-  res.status(404).render("404", { pageTitle: "Page not Found" });
+  res.status(404).render("errors/404", { 
+    pageTitle: "Page not Found",
+    isAuthenticated: req.session.isLoggedIn
+  });
 });
 
 
