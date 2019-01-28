@@ -4,7 +4,8 @@ const User = require("../models/user");
 exports.getLogin = (req, res, next) => {
   res.render("auth/login", {
     pageTitle: "Login",
-    isAuthenticated: req.session.isLoggedIn
+    isAuthenticated: req.session.isLoggedIn,
+    errorMessage: req.flash('error')
   });
 };
 
@@ -14,6 +15,7 @@ exports.postLogin = (req, res, next) => {
   User.findOne({where: {username: username}})
     .then(user => {
       if(!user){
+        req.flash('error', 'Invalid email or password.');
         return res.redirect('/login');        
       }
       bcrypt.compare(password, user.password)
@@ -21,9 +23,12 @@ exports.postLogin = (req, res, next) => {
           if (doMatch){
             req.session.isLoggedIn = true;
             req.session.user = user;
-  
-            return res.redirect('/users');
+            return req.session.save(err => {
+              console.log(err);
+              res.redirect('/users');
+            });
           }
+          req.flash('error', 'Invalid email or password.');
           res.redirect('/login');
         })
         .catch(err => {
