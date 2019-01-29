@@ -9,4 +9,6 @@ router.post("/", isAuth);
 
 router.get("/:id", isAuth, usersController.showUser);
 
+router.get("/:id/edit", isAuth, usersController.getEditUser);
+
 module.exports = router;

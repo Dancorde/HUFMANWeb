@@ -13,7 +13,8 @@ const sequelize = require('./config/database');
 app.engine('hbs', exphbs({
   layoutsDir: 'views/layouts',
   defaultLayout: 'layout',
-  extname: 'hbs'
+  extname: 'hbs',
+  helpers: require('./config/handlebars-helpers')
 }));
 app.set('view engine', 'hbs');
 app.set('views', 'views');

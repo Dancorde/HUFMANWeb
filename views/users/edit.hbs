@@ -1,0 +1,20 @@
+<form action="/users/{{user.id}}" method="post">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" value="{{user.username}}">
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" value="{{user.password}}">
+  </div>
+  <div>
+    <label for="role">Role</label>
+    <select name="role" id="role">
+      <option value="Administrator" {{ ifEqual user.role "Administrator" "selected" "" }}>Administrator</option>
+      <option value="Client" {{ ifEqual user.role "Client" "selected" "" }}>Client</option>
+      <option value="Maintainer" {{ ifEqual user.role "Maintainer" "selected" "" }}>Maintainer</option>
+      <option value="Planner" {{ ifEqual user.role "Planner" "selected" "" }}>Planner</option>
+    </select>
+  </div>
+  <input type="submit" value="Save">
+</form>
