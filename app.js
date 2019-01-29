@@ -21,7 +21,7 @@ app.set('views', 'views');
 // Routes imports
 const indexRoutes = require("./routes/index");
 const authRoutes = require("./routes/auth");
-const usersRoutes = require('./routes/user');
+const usersRoutes = require('./routes/users');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));

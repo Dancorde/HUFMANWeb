@@ -23,21 +23,18 @@ const User = sequelize.define("user", {
     type: Sequelize.STRING,
     allowNull: false
   }
-}, {
-    hooks: {
-      beforeCreate: (user) => {
-        const salt = bcrypt.genSaltSync(12);
-        user.password = bcrypt.hashSync(user.password, salt);
-      },
-      beforeSave: (user) => {
-        const salt = bcrypt.genSaltSync(12);
-        user.password = bcrypt.hashSync(user.password, salt);
-      }
+}, 
+{
+  hooks: {
+    beforeCreate: (user) => {
+      const salt = bcrypt.genSaltSync(12);
+      user.password = bcrypt.hashSync(user.password, salt);
+    },
+    beforeSave: (user) => {
+      const salt = bcrypt.genSaltSync(12);
+      user.password = bcrypt.hashSync(user.password, salt);
     }
-  });
-
-  User.prototype.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
   }
+});
 
 module.exports = User;
