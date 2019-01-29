@@ -15,8 +15,11 @@
         <td>{{this.role}}</td>
         <td><a href="/users/{{this.id}}"><i class="fas fa-eye" aria-hidden="true"></i></a></td>
         <td><a href="/users/{{this.id}}/edit"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
-        <td><a href=""><i class="fas fa-trash" aria-hidden="true"></i></a></td>
+        <td><a href="/users/{{this.id}}/delete" data-confirm="Are you sure?"><i class="fas fa-trash" aria-hidden="true"></i></a></td>
       </tr>
     {{/each}}
   </tbody>
 </table>
+
+<br>
+<a href="/users/new">New User</a>

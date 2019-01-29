@@ -1,0 +1,22 @@
+<h1>New User</h1>
+
+<form action="/users/new" method="post">
+  <div>
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+  </div>
+  <div>
+    <label for="role">Role</label>
+    <select name="role" id="role">
+      <option value="Administrator">Administrator</option>
+      <option value="Client">Client</option>
+      <option value="Maintainer">Maintainer</option>
+      <option value="Planner">Planner</option>
+    </select>
+  </div>
+  <input type="submit" value="Create">
+</form>
