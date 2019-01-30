@@ -3,8 +3,9 @@ const router = express.Router();
 
 const usersController = require("../controllers/users");
 const isAuth = require("../middleware/is-auth");
+const isAdministrator = require("../middleware/is-administrator");
 
-router.get("/", isAuth, usersController.getUsersList);
+router.get("/", isAuth, isAdministrator, usersController.getUsersList);
 
 router.get("/new", isAuth, usersController.getNewUser);
 router.post("/new", isAuth, usersController.postNewUser);
