@@ -22,6 +22,7 @@ app.set('views', 'views');
 // Routes imports
 const indexRoutes = require("./routes/index");
 const authRoutes = require("./routes/auth");
+const dashboardRoutes = require("./routes/dashboard");
 const usersRoutes = require('./routes/users');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,6 +43,7 @@ app.use(flash());
 // Routes
 app.use("/", indexRoutes);
 app.use("/", authRoutes);
+app.use("/dashboard", dashboardRoutes);
 app.use('/users', usersRoutes);
 
 // 404 Error
