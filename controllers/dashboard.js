@@ -7,6 +7,6 @@ exports.getDashboard = (req, res, next) => {
   res.render("dashboards/" + role, {
     pageTitle: "Home",
     isAuthenticated: req.session.isLoggedIn,
-    user: loggedUser
+    loggedUser: loggedUser
   });
 };
