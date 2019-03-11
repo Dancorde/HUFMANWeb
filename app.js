@@ -60,6 +60,6 @@ sequelize
   .then(() => {
     app.listen(3000);
   })
-  .catch(errr => {
+  .catch(err => {
     console.log(err);
   });

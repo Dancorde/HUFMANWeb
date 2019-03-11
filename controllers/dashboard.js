@@ -1,12 +1,12 @@
 const User = require("../models/user");
 
 exports.getDashboard = (req, res, next) => {
-  const user = req.session.user;
-  const role = user.role.toLowerCase();
+  const loggedUser = req.session.user;
+  const role = loggedUser.role.toLowerCase();
 
   res.render("dashboards/" + role, {
     pageTitle: "Home",
     isAuthenticated: req.session.isLoggedIn,
-    user: user
+    user: loggedUser
   });
 };

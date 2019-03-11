@@ -1,23 +1,29 @@
 const User = require("../models/user");
 
 exports.getUsersList = (req, res, next) => {
+  const loggedUser = req.session.user;
+
   User.findAll()
     .then(users => {
       res.render('users/list',{
         users: users,
-        isAuthenticated: req.session.isLoggedIn
+        isAuthenticated: req.session.isLoggedIn,
+        loggedUser: loggedUser
       });
     })
     .catch();  
 };
 
 exports.showUser = (req, res, next) => {
+  const loggedUser = req.session.user;
+
   User.findById(req.params.id)
     .then(user => {
       if (user){
         return res.render("users/show", {
           user: user,
-          isAuthenticated: req.session.isLoggedIn
+          isAuthenticated: req.session.isLoggedIn,
+          loggedUser: loggedUser
         });
       }  
       res.render('errors/404');
@@ -28,12 +34,15 @@ exports.showUser = (req, res, next) => {
 };
 
 exports.getEditUser = (req, res, next) => {
+  const loggedUser = req.session.user;
+
   User.findById(req.params.id)
     .then(user => {
       if (user) {
         return res.render("users/edit", {
           user: user,
-          isAuthenticated: req.session.isLoggedIn
+          isAuthenticated: req.session.isLoggedIn,
+          loggedUser: loggedUser
         });
       }
       res.render('errors/404');
