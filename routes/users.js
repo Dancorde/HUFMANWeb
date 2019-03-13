@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const usersController = require("../controllers/users");
+
 const isAuth = require("../middleware/is-auth");
 const isNotClient = require("../middleware/isNot-client");
 const isNotPlanner = require("../middleware/isNot-planner");

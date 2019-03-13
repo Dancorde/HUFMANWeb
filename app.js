@@ -1,3 +1,4 @@
+const dot = require("dotenv").config();
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -31,7 +32,9 @@ app.use(
   session({
     secret: "my secret",
     store: new SequelizeStore({
-      db: sequelize
+      db: sequelize,
+      checkExpirationInterval: 15 * 60 * 1000, // The interval at which to cleanup expired sessions in milliseconds.
+      expiration: 1 * 60 * 60 * 1000  // The maximum age (in milliseconds) of a valid session.
     }),
     resave: false,
     saveUninitialized: false
