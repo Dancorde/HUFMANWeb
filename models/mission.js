@@ -13,7 +13,7 @@ const Mission = sequelize.define("mission", {
     type: Sequelize.STRING,
     allowNull: false
   },
-  architeture: {
+  architecture: {
     type: Sequelize.STRING,
     allowNull: false
   },

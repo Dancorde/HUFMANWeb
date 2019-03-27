@@ -25,7 +25,8 @@ const indexRoutes = require("./routes/index");
 const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
 const usersRoutes = require("./routes/users");
-const phasesRoutes = require('./routes/phases');
+const phasesRoutes = require("./routes/phases");
+const missionsRoutes = require('./routes/missions');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -49,7 +50,8 @@ app.use("/", indexRoutes);
 app.use("/", authRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/users", usersRoutes);
-app.use('/phases', phasesRoutes);
+app.use("/phases", phasesRoutes);
+app.use('/missions', missionsRoutes);
 
 // 404 Error
 app.use('/', (req, res, next) => {
@@ -61,7 +63,7 @@ app.use('/', (req, res, next) => {
 
 
 sequelize
-  .sync()
+  .sync({force: false})
   .then(() => {
     app.listen(3000);
   })

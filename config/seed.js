@@ -1,6 +1,8 @@
 const bcrypt = require("bcryptjs");
+const dot = require("dotenv").config();
 
 const User = require("../models/user");
+
 
 User.create({
   username: "Administrator",
@@ -49,3 +51,4 @@ User.create({
   .catch(err => {
     console.log(err);
   });
+

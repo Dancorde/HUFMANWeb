@@ -1,12 +1,12 @@
 const Mission = require("../models/mission");
 
-exports.getUsersList = (req, res, next) => {
+exports.getMissionList = (req, res, next) => {
   const loggedUser = req.session.user;
 
-  User.findAll()
-    .then(users => {
-      res.render('users/list', {
-        users: users,
+  Mission.findAll()
+    .then(missions => {
+      res.render('missions/list', {
+        missions: missions,
         isAuthenticated: req.session.isLoggedIn,
         loggedUser: loggedUser
       });
@@ -14,100 +14,28 @@ exports.getUsersList = (req, res, next) => {
     .catch();
 };
 
-exports.showUser = (req, res, next) => {
-  const loggedUser = req.session.user;
-
-  User.findById(req.params.id)
-    .then(user => {
-      if (user) {
-        return res.render("users/show", {
-          user: user,
-          isAuthenticated: req.session.isLoggedIn,
-          loggedUser: loggedUser
-        });
-      }
-      res.render('errors/404');
-    })
-    .catch(err => {
-      console.log(err);
-    });
+exports.getNewMission = (req, res, next) => {
+  res.render("missions/new");
 };
 
-exports.getEditUser = (req, res, next) => {
-  const loggedUser = req.session.user;
+exports.postNewMission = (req, res, next) => {
+  client = req.body.client;
+  architecture = req.body.architecture;
+  centralVant = req.body.centralVant;
+  formation = req.body.formation;
 
-  User.findById(req.params.id)
-    .then(user => {
-      if (user) {
-        return res.render("users/edit", {
-          user: user,
-          isAuthenticated: req.session.isLoggedIn,
-          loggedUser: loggedUser
-        });
-      }
-      res.render('errors/404');
+  Mission.create({
+    client: client,
+    architecture: architecture,
+    centralVant: centralVant,
+    formation: formation
+  })
+    .then(() => {
+      res.redirect("/missions");
     })
     .catch(err => {
+      req.flash('error', 'Error.');
       console.log(err);
+      res.redirect("/");
     });
-}
-
-exports.postEditUser = (req, res, next) => {
-  const userId = req.params.id;
-  const updatedUsername = req.body.username;
-  const updatedPassword = req.body.password;
-  const updatedRole = req.body.role;
-
-  User.findById(userId)
-    .then(user => {
-      user.username = updatedUsername;
-      user.password = updatedPassword;
-      user.role = updatedRole;
-      return user.save();
-    })
-    .then(result => {
-      res.status(200).redirect('/users')
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-exports.postDeleteUser = (req, res, next) => {
-  const userId = req.body.userId;
-
-  User.findById(req.params.id)
-    .then(user => {
-      if (!user) {
-        return res.redirect("/users");
-      }
-      return user.destroy();
-    })
-    .then(result => {
-      res.redirect("/users");
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-exports.getNewUser = (req, res, next) => {
-  res.render('users/new');
-};
-
-exports.postNewUser = (req, res, next) => {
-  username = req.body.username;
-  password = req.body.password;
-  role = req.body.role;
-
-  User.create({
-    username: username,
-    password: password,
-    role: role
-  }).then(() => {
-    res.redirect("/users");
-  }).catch(err => {
-    console.log(err);
-    res.redirect("/");
-  });
 };
