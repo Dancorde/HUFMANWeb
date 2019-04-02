@@ -3,7 +3,9 @@ const User = require("../models/user");
 exports.getUsersList = (req, res, next) => {
   const loggedUser = req.session.user;
 
-  User.findAll()
+  User.findAll({
+    order: ['username']
+  })
     .then(users => {
       res.render('users/list',{
         users: users,

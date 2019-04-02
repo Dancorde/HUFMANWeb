@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Serial Number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each components}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.brand}}</td>
+      <td>{{this.serialNumber}}</td>
+      <td><a href="/components/{{this.id}}"><i class="fas fa-eye" aria-hidden="true"></i></a></td>
+      <td><a href="/components/{{this.id}}/edit"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
+      <td><a href="/components/{{this.id}}/delete" data-confirm="Are you sure?"><i class="fas fa-trash"
+            aria-hidden="true"></i></a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<br>
+<a href="/components/new">New Component</a>

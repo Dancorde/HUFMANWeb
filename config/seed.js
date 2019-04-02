@@ -52,3 +52,17 @@ User.create({
     console.log(err);
   });
 
+
+for(i=0; i < 10; i++){
+  User.create({
+    username: "Client" + i,
+    password: "test",
+    role: "Client"
+  })
+    .then(result => {
+      console.log(result);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}

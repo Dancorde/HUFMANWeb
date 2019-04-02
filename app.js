@@ -26,7 +26,8 @@ const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
 const usersRoutes = require("./routes/users");
 const phasesRoutes = require("./routes/phases");
-const missionsRoutes = require('./routes/missions');
+const missionsRoutes = require("./routes/missions");
+const componentsRoutes = require('./routes/components');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -51,7 +52,8 @@ app.use("/", authRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/users", usersRoutes);
 app.use("/phases", phasesRoutes);
-app.use('/missions', missionsRoutes);
+app.use("/missions", missionsRoutes);
+app.use('/components', componentsRoutes);
 
 // 404 Error
 app.use('/', (req, res, next) => {
