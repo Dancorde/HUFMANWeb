@@ -6,7 +6,7 @@ const VANT = require("./vant");
 const Component = require("./component");
 
 const CompVant = sequelize.define("compvant", {
-  id: {
+  compVantId: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
