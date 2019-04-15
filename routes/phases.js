@@ -10,4 +10,11 @@ router.get("/", isAuth, phaseController.getPhaseList);
 router.get("/new", isAuth, phaseController.getNewPhase);
 router.post("/new", isAuth, phaseController.postNewPhase);
 
+router.get('/:id/delete', isAuth, phaseController.deletePhase);
+
+router.get("/:id", isAuth, phaseController.showPhase);
+
+router.get("/:id/edit", isAuth, phaseController.getEditPhase);
+router.post("/:id", isAuth, phaseController.postEditPhase);
+
 module.exports = router;

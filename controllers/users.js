@@ -19,7 +19,7 @@ exports.getUsersList = (req, res, next) => {
 exports.showUser = (req, res, next) => {
   const loggedUser = req.session.user;
 
-  User.findById(req.params.id)
+  User.findByPk(req.params.id)
     .then(user => {
       if (user){
         return res.render("users/show", {
@@ -38,7 +38,7 @@ exports.showUser = (req, res, next) => {
 exports.getEditUser = (req, res, next) => {
   const loggedUser = req.session.user;
 
-  User.findById(req.params.id)
+  User.findByPk(req.params.id)
     .then(user => {
       if (user) {
         return res.render("users/edit", {
@@ -60,7 +60,7 @@ exports.postEditUser = (req, res, next) => {
   const updatedPassword = req.body.password;
   const updatedRole = req.body.role;
 
-  User.findById(userId)
+  User.findByPk(userId)
     .then(user => {
       user.username = updatedUsername;
       user.password = updatedPassword;
@@ -78,7 +78,7 @@ exports.postEditUser = (req, res, next) => {
 exports.postDeleteUser = (req, res, next) => {
   const userId = req.body.userId;
 
-  User.findById(req.params.id)
+  User.findByPk(req.params.id)
     .then(user => {
       if (!user) {
         return res.redirect("/users");
