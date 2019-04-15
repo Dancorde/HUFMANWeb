@@ -14,9 +14,9 @@ const CompVant = sequelize.define("compvant", {
   }
 });
 
-CompVant.belongsTo(VANT, { foreignKey: 'id', targetKey: 'typeId' });
-CompVant.belongsTo(VANT, { foreignKey: 'id' ,targetKey: 'valueId' });
+CompVant.belongsTo(VANT, { foreignKey: 'typeId', targetKey: 'typeId' });
+CompVant.belongsTo(VANT, { foreignKey: 'valueId' ,targetKey: 'valueId' });
 
-CompVant.belongsTo(Component, { foreignKey: 'id', targetKey: 'name' });
+CompVant.belongsTo(Component, { foreignKey: 'name', targetKey: 'name' });
 
 module.exports = CompVant;
