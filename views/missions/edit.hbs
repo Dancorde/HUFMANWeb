@@ -1,0 +1,19 @@
+<form action="/missions/{{mission.id}}" method="post">
+  <div>
+    <label for="client">client</label>
+    <input type="text" name="client" id="client" value="{{mission.client}}">
+  </div>
+  <div>
+    <label for="architecture">architecture</label>
+    <input type="text" name="architecture" id="architecture" value="{{mission.architecture}}">
+  </div>
+  <div>
+    <label for="centralVant">centralVant</label>
+    <input type="text" name="centralVant" id="centralVant" value="{{mission.centralVant}}">
+  </div>
+  <div>
+    <label for="formation">formation</label>
+    <input type="text" name="formation" id="formation" value="{{mission.formation}}">
+  </div>
+  <input type="submit" value="Save">
+</form>

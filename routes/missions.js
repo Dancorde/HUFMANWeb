@@ -10,4 +10,11 @@ router.get("/", isAuth, missionController.getMissionList);
 router.get("/new", isAuth, missionController.getNewMission);
 router.post("/new", isAuth, missionController.postNewMission);
 
+router.get('/:id/delete', isAuth, missionController.deleteMission);
+
+router.get("/:id", isAuth, missionController.showMission);
+
+router.get("/:id/edit", isAuth, missionController.getEditMission);
+router.post("/:id", isAuth, missionController.postEditMission);
+
 module.exports = router;
