@@ -13,3 +13,27 @@ exports.getCompVantList = (req, res, next) => {
     })
     .catch();
 };
+
+exports.getNewCompVant = (req, res, next) => {
+  res.render("compvant/new");
+};
+
+exports.postNewComponent = (req, res, next) => {
+  name = req.body.name;
+  brand = req.body.brand;
+  serialNumber = req.body.serialNumber;
+
+  Component.create({
+    name: name,
+    serialNumber: serialNumber,
+    brand: brand
+  })
+    .then(() => {
+      res.redirect("/components");
+    })
+    .catch(err => {
+      req.flash("error", "Error.");
+      console.log(err);
+      res.redirect("/");
+    });
+};

@@ -55,7 +55,7 @@ app.use("/users", usersRoutes);
 app.use("/phases", phasesRoutes);
 app.use("/missions", missionsRoutes);
 app.use('/components', componentsRoutes);
-app.use('/components', compVantRoutes);
+app.use('/compvants', compVantRoutes);
 
 // 404 Error
 app.use('/', (req, res, next) => {
