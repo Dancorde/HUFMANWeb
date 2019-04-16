@@ -96,13 +96,13 @@ exports.getEditMission = (req, res, next) => {
 }
 
 exports.postEditMission = (req, res, next) => {
-  const userId = req.params.id;
+  const middionId = req.params.id;
   const updatedClient = req.body.client;
   const updatedArchitecture = req.body.architecture;
   const updatedContralVant = req.body.centralVant;
   const updatedFormation = req.body.formation;
 
-  Mission.findByPk(userId)
+  Mission.findByPk(middionId)
     .then(mission => {
       mission.client = updatedClient;
       mission.architecture = updatedArchitecture;

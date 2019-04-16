@@ -37,3 +37,80 @@ exports.postNewComponent = (req, res, next) => {
       res.redirect("/");
     });
 };
+
+
+exports.showComponent = (req, res, next) => {
+  const loggedUser = req.session.user;
+
+  Component.findByPk(req.params.id)
+    .then(component => {
+      if (component) {
+        return res.render("components/show", {
+          component: component,
+          isAuthenticated: req.session.isLoggedIn,
+          loggedUser: loggedUser
+        });
+      }
+      res.render('errors/404');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+exports.deleteComponent = (req, res, next) => {
+
+  Component.findByPk(req.params.id)
+    .then(component => {
+      if (!component) {
+        return res.redirect("/components");
+      }
+      return component.destroy();
+    })
+    .then(result => {
+      res.redirect("/components");
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+exports.getEditComponent = (req, res, next) => {
+  const loggedUser = req.session.user;
+
+  Component.findByPk(req.params.id)
+    .then(component => {
+      if (component) {
+        return res.render("components/edit", {
+          component: component,
+          isAuthenticated: req.session.isLoggedIn,
+          loggedUser: loggedUser
+        });
+      }
+      res.render('errors/404');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+}
+
+exports.postEditComponent = (req, res, next) => {
+  const componentId = req.params.id;
+  const updatedName = req.body.name;
+  const updatedSerialNumber = req.body.serialNumber;
+  const updatedBrand = req.body.brand;
+
+  Component.findByPk(componentId)
+    .then(component => {
+      component.name = updatedName;
+      component.serialNumber = updatedSerialNumber;
+      component.brand = updatedBrand;
+      return component.save();
+    })
+    .then(result => {
+      res.status(200).redirect('/components')
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};

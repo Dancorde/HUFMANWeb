@@ -1,0 +1,15 @@
+<form action="/components/{{component.id}}" method="post">
+  <div>
+    <label for="name">name</label>
+    <input type="text" name="name" id="name" value="{{component.name}}">
+  </div>
+  <div>
+    <label for="brand">brand</label>
+    <input type="text" name="brand" id="brand" value="{{component.brand}}">
+  </div>
+  <div>
+    <label for="serialNumber">serialNumber</label>
+    <input type="text" name="serialNumber" id="serialNumber" value="{{component.serialNumber}}">
+  </div>
+  <input type="submit" value="Save">
+</form>
