@@ -11,7 +11,8 @@ const Component = sequelize.define("component", {
   },
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    primaryKey: true
   },
   brand: {
     type: Sequelize.STRING,

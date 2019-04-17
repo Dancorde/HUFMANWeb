@@ -25,11 +25,11 @@ const indexRoutes = require("./routes/index");
 const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
 const usersRoutes = require("./routes/users");
+const vantRoutes = require('./routes/vants');
+const componentsRoutes = require('./routes/components');
 const phasesRoutes = require("./routes/phases");
 const missionsRoutes = require("./routes/missions");
-const componentsRoutes = require('./routes/components');
 const compVantRoutes = require('./routes/compvants');
-const vantRoutes = require('./routes/vants');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -53,11 +53,11 @@ app.use("/", indexRoutes);
 app.use("/", authRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/users", usersRoutes);
+app.use('/vants', vantRoutes);
+app.use('/components', componentsRoutes);
 app.use("/phases", phasesRoutes);
 app.use("/missions", missionsRoutes);
-app.use('/components', componentsRoutes);
 app.use('/compvants', compVantRoutes);
-app.use('/vants', vantRoutes);
 
 // 404 Error
 app.use('/', (req, res, next) => {
@@ -69,7 +69,7 @@ app.use('/', (req, res, next) => {
 
 
 sequelize
-  .sync({force: false})
+  .sync({force: true})
   .then(() => {
     app.listen(3000);
   })
