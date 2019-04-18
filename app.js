@@ -49,8 +49,8 @@ app.use(
 app.use(flash());
 
 // Routes
-app.use("/", indexRoutes);
 app.use("/", authRoutes);
+app.use("/", indexRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/users", usersRoutes);
 app.use('/vants', vantRoutes);
