@@ -8,13 +8,13 @@ const isAuth = require("../middleware/is-auth");
 router.get("/", isAuth, compVantController.getCompVantList);
 
 router.get("/new", isAuth, compVantController.getNewCompVant);
-// router.post("/new", isAuth, compVantController.);
+router.post("/new", isAuth, compVantController.postNewCompVant);
 
-// router.get('/:id/delete', isAuth, compVantController.);
+router.get('/:id/delete', isAuth, compVantController.deleteCompVant);
 
-// router.get("/:id", isAuth, compVantController.);
+router.get("/:id", isAuth, compVantController.showCompVant);
 
-// router.get("/:id/edit", isAuth, compVantController.);
-// router.post("/:id", isAuth, compVantController.);
+router.get("/:id/edit", isAuth, compVantController.getEditCompVant);
+router.post("/:id", isAuth, compVantController.postEditCompVant);
 
 module.exports = router;

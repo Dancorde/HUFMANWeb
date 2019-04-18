@@ -15,9 +15,9 @@
       <td>{{this.typeId}}</td>
       <td>{{this.valueId}}</td>
       <td>{{this.name}}</td>
-      <td><a href="/compvant/{{this.id}}"><i class="fas fa-eye" aria-hidden="true"></i></a></td>
-      <td><a href="/compvant/{{this.id}}/edit"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
-      <td><a href="/compvant/{{this.id}}/delete" data-confirm="Are you sure?"><i class="fas fa-trash"
+      <td><a href="/compvants/{{this.compVantId}}"><i class="fas fa-eye" aria-hidden="true"></i></a></td>
+      <td><a href="/compvants/{{this.compVantId}}/edit"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
+      <td><a href="/compvants/{{this.compVantId}}/delete" data-confirm="Are you sure?"><i class="fas fa-trash"
             aria-hidden="true"></i></a></td>
     </tr>
     {{/each}}
@@ -25,4 +25,4 @@
 </table>
 
 <br>
-<a href="/compvant/new">New CompVant</a>
+<a href="/compvants/new">New CompVant</a>
