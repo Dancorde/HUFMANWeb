@@ -13,14 +13,14 @@
   <title>HUFMANWeb | {{pageTitle}}</title>
 </head>
 
-<body class="login-page">
-  {{!-- {{> navbar}} --}}
+<body class="hold-transition login-page">
   {{#if errorMessage}}
   <div class="alert alert-danger" role="alert">
     {{errorMessage}}
   </div>
   {{/if}}
-        {{{body}}}
+
+  {{{body}}}
 
   <script src="/javascripts/jquery-3.3.1.min.js"></script>
   <script src="/javascripts/popper.min.js"></script>
