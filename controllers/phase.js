@@ -6,6 +6,7 @@ exports.getPhaseList = (req, res, next) => {
   Phase.findAll()
     .then(phases => {
       res.render('phases/list', {
+        pageTitle: "Phases",
         phases: phases,
         isAuthenticated: req.session.isLoggedIn,
         loggedUser: loggedUser
@@ -15,7 +16,12 @@ exports.getPhaseList = (req, res, next) => {
 };
 
 exports.getNewPhase = (req, res, next) => {
-  res.render("phases/new");
+  const loggedUser = req.session.user;
+  res.render("phases/new", {
+    pageTitle: "Phases",
+    isAuthenticated: req.session.isLoggedIn,
+    loggedUser: loggedUser
+  });
 };
 
 exports.postNewPhase = (req, res, next) => {
@@ -43,6 +49,7 @@ exports.showPhase = (req, res, next) => {
     .then(phase => {
       if (phase) {
         return res.render("phases/show", {
+          pageTitle: "Phases",
           phase: phase,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser
@@ -79,6 +86,7 @@ exports.getEditPhase = (req, res, next) => {
     .then(phase => {
       if (phase) {
         return res.render("phases/edit", {
+          pageTitle: "Phases",
           phase: phase,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser

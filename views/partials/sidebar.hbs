@@ -1,0 +1,158 @@
+<aside class="main-sidebar sidebar-dark-primary bg-secondary elevation-4">
+  <a href="/dashboard" class="brand-link bg-primary ">
+    <span class="brand-text font-weight-light text-center">HUFMANWeb</span>
+  </a>
+
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="/dashboard" class="nav-link active">
+            <i class="nav-icon fa fa-th"></i>
+            <p>
+              Dashboard
+            </p>
+          </a>
+        </li>
+        <li class="nav-item has-treeview {{ ifEqual pageTitle "Users" "menu-open" "" }}">
+          <a href="/users" class="nav-link active">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Users
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/users" class="nav-link">
+                <i class="fas fa-list nav-icon"></i>
+                <p>List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/users/new" class="nav-link">
+                <i class="fas fa-plus-circle nav-icon"></i>
+                <p>New</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview {{ ifEqual pageTitle "Phases" "menu-open" "" }}">
+          <a href="/phases" class="nav-link active">
+            <i class="nav-icon fas fa-stopwatch"></i>
+            <p>
+              Phases
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/phases" class="nav-link">
+                <i class="fas fa-list nav-icon"></i>
+                <p>List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="phases/new" class="nav-link">
+                <i class="fas fa-plus-circle nav-icon"></i>
+                <p>New</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview {{ ifEqual pageTitle "Missions" "menu-open" "" }}">
+          <a href="/missions" class="nav-link active">
+            <i class="fas fa-route nav-icon"></i>
+            <p>
+              Missions
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/missions" class="nav-link">
+                <i class="fas fa-list nav-icon"></i>
+                <p>List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/missions/new" class="nav-link">
+                <i class="fas fa-plus-circle nav-icon"></i>
+                <p>New</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview {{ ifEqual pageTitle "Components" "menu-open" "" }}">
+          <a href="/components" class="nav-link active">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+              Components
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/components" class="nav-link">
+                <i class="fas fa-list nav-icon"></i>
+                <p>List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/components/new" class="nav-link">
+                <i class="fas fa-plus-circle nav-icon"></i>
+                <p>New</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview {{ ifEqual pageTitle "VANTs" "menu-open" "" }}">
+          <a href="/vants" class="nav-link active">
+            <i class="nav-icon fas fa-plane"></i>
+            <p>
+              VANTs
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/vants" class="nav-link">
+                <i class="fas fa-list nav-icon"></i>
+                <p>List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/vants/new" class="nav-link">
+                <i class="fas fa-plus-circle nav-icon"></i>
+                <p>New</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview {{ ifEqual pageTitle "CompVANTs" "menu-open" "" }}">
+          <a href="/compvants" class="nav-link active">
+            <i class="nav-icon fas fa-plane-arrival"></i>
+            <p>
+              CompVANTs
+              <i class="right fa fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/compvants" class="nav-link">
+                <i class="fas fa-list nav-icon"></i>
+                <p>List</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/compvants/new" class="nav-link">
+                <i class="fas fa-plus-circle nav-icon"></i>
+                <p>New</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
-  <link rel="stylesheet" href="/stylesheets/fontawesome/css/all.min.css">
-  <link rel="stylesheet" href="/stylesheets/adminlte.min.css">
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  {{> css}}
 
   <title>HUFMANWeb | {{pageTitle}}</title>
 </head>
@@ -16,22 +13,19 @@
 
   {{> navbar}}
 
+  {{> sidebar}}
+
   {{#if errorMessage}}
   <div class="alert alert-danger" role="alert">
     {{errorMessage}}
   </div>
   {{/if}}
-  <main role="main" class="content">
-    <div class="container-fluid">
-      {{{body}}}
-    </div>  
-  </main>
+  <div class="content-wrapper">
+    {{{body}}}
+  </div>
 
   {{> footer}}
 
-  <script src="/javascripts/jquery-3.3.1.min.js"></script>
-  <script src="/javascripts/popper.min.js"></script>
-  <script src="/javascripts/bootstrap.min.js"></script>
-  <script src="/javascripts/adminlte.min.js"></script>
+  {{> js}}
 </body>
 </html>

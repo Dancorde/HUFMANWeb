@@ -8,6 +8,7 @@ exports.getUsersList = (req, res, next) => {
   })
     .then(users => {
       res.render('users/list',{
+        pageTitle: "Users",
         users: users,
         isAuthenticated: req.session.isLoggedIn,
         loggedUser: loggedUser
@@ -23,6 +24,7 @@ exports.showUser = (req, res, next) => {
     .then(user => {
       if (user){
         return res.render("users/show", {
+          pageTitle: "Users",
           user: user,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser
@@ -42,6 +44,7 @@ exports.getEditUser = (req, res, next) => {
     .then(user => {
       if (user) {
         return res.render("users/edit", {
+          pageTitle: "Users",
           user: user,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser
@@ -94,7 +97,12 @@ exports.postDeleteUser = (req, res, next) => {
 };
 
 exports.getNewUser = (req, res, next) => {
-  res.render('users/new');
+  const loggedUser = req.session.user;
+  res.render('users/new', {
+    pageTitle: "Users",
+    isAuthenticated: req.session.isLoggedIn,
+    loggedUser: loggedUser
+  });
 };
 
 exports.postNewUser = (req, res, next) => {

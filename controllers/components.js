@@ -6,6 +6,7 @@ exports.getComponentList = (req, res, next) => {
   Component.findAll()
     .then(components => {
       res.render("components/list", {
+        pageTitle: "Components",
         components: components,
         isAuthenticated: req.session.isLoggedIn,
         loggedUser: loggedUser
@@ -15,7 +16,12 @@ exports.getComponentList = (req, res, next) => {
 };
 
 exports.getNewComponent = (req, res, next) => {
-  res.render("components/new");
+  const loggedUser = req.session.user;
+  res.render("components/new", {
+    pageTitle: "Components",
+    isAuthenticated: req.session.isLoggedIn,
+    loggedUser: loggedUser
+  });
 };
 
 exports.postNewComponent = (req, res, next) => {
@@ -46,6 +52,7 @@ exports.showComponent = (req, res, next) => {
     .then(component => {
       if (component) {
         return res.render("components/show", {
+          pageTitle: "Components",
           component: component,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser
@@ -82,6 +89,7 @@ exports.getEditComponent = (req, res, next) => {
     .then(component => {
       if (component) {
         return res.render("components/edit", {
+          pageTitle: "Components",
           component: component,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser

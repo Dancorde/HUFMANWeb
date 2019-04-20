@@ -6,6 +6,7 @@ exports.getMissionList = (req, res, next) => {
   Mission.findAll()
     .then(missions => {
       res.render('missions/list', {
+        pageTitle: "Missions",
         missions: missions,
         isAuthenticated: req.session.isLoggedIn,
         loggedUser: loggedUser
@@ -15,7 +16,12 @@ exports.getMissionList = (req, res, next) => {
 };
 
 exports.getNewMission = (req, res, next) => {
-  res.render("missions/new");
+  const loggedUser = req.session.user;
+  res.render("missions/new", {
+    pageTitle: "Missions",
+    isAuthenticated: req.session.isLoggedIn,
+    loggedUser: loggedUser
+  });
 };
 
 exports.postNewMission = (req, res, next) => {
@@ -47,6 +53,7 @@ exports.showMission = (req, res, next) => {
     .then(mission => {
       if (mission) {
         return res.render("missions/show", {
+          pageTitle: "Missions",
           mission: mission,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser
@@ -83,6 +90,7 @@ exports.getEditMission = (req, res, next) => {
     .then(mission => {
       if (mission) {
         return res.render("missions/edit", {
+          pageTitle: "Missions",
           mission: mission,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser

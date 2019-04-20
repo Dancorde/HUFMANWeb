@@ -6,6 +6,7 @@ exports.getCompVantList = (req, res, next) => {
   CompVant.findAll()
     .then(compVants => {
       res.render("compvants/list", {
+        pageTitle: "CompVANTs",
         compVants: compVants,
         isAuthenticated: req.session.isLoggedIn,
         loggedUser: loggedUser
@@ -15,7 +16,12 @@ exports.getCompVantList = (req, res, next) => {
 };
 
 exports.getNewCompVant = (req, res, next) => {
-  res.render("compvants/new");
+  const loggedUser = req.session.user;
+  res.render("compvants/new",{
+    pageTitle: "CompVANTs",
+    isAuthenticated: req.session.isLoggedIn,
+    loggedUser: loggedUser
+  });
 };
 
 exports.postNewCompVant = (req, res, next) => {
@@ -45,6 +51,7 @@ exports.showCompVant = (req, res, next) => {
     .then(compVant => {
       if (compVant) {
         return res.render("compvants/show", {
+          pageTitle: "CompVANTs",
           compVant: compVant,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser
@@ -81,6 +88,7 @@ exports.getEditCompVant = (req, res, next) => {
     .then(compVant => {
       if (compVant) {
         return res.render("compvants/edit", {
+          pageTitle: "CompVANTs",
           compVant: compVant,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser

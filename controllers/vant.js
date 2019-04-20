@@ -6,6 +6,7 @@ exports.getVantList = (req, res, next) => {
   Vant.findAll()
     .then(vants => {
       res.render('vants/list', {
+        pageTitle: "VANTs",
         vants: vants,
         isAuthenticated: req.session.isLoggedIn,
         loggedUser: loggedUser
@@ -18,6 +19,7 @@ exports.getNewVant = (req, res, next) => {
   const loggedUser = req.session.user;
 
   res.render("vants/new", {
+    pageTitle: "VANTs",
     isAuthenticated: req.session.isLoggedIn,
     loggedUser: loggedUser
   });
@@ -60,6 +62,7 @@ exports.showVant = (req, res, next) => {
     .then(vant => {
       if (vant) {
         return res.render("vants/show", {
+          pageTitle: "VANTs",
           vant: vant,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser
@@ -96,6 +99,7 @@ exports.getEditVant = (req, res, next) => {
     .then(vant => {
       if (vant) {
         return res.render("vants/edit", {
+          pageTitle: "VANTs",
           vant: vant,
           isAuthenticated: req.session.isLoggedIn,
           loggedUser: loggedUser

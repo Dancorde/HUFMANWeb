@@ -5,7 +5,7 @@ exports.getDashboard = (req, res, next) => {
   const role = loggedUser.role.toLowerCase();
 
   res.render("dashboards/" + role, {
-    pageTitle: "Home",
+    pageTitle: "Dashboard",
     isAuthenticated: req.session.isLoggedIn,
     loggedUser: loggedUser
   });
