@@ -1,35 +1,70 @@
-<form action="/vants/{{vant.id}}" method="post">
-  <div>
-    <label for="typeId">typeId</label>
-    <input type="text" name="typeId" id="typeId" value="{{vant.typeId}}">
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">VANTs</h1>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="valueId">valueId</label>
-    <input type="text" name="valueId" id="valueId" value="{{vant.valueId}}">
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Edit VANT</h3>
+          </div>
+          <form action="/vants/{{vant.id}}" method="post">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="typeId">typeId</label>
+                    <input class="form-control" type="text" name="typeId" id="typeId" value="{{vant.typeId}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="valueId">valueId</label>
+                    <input class="form-control" type="text" name="valueId" id="valueId" value="{{vant.valueId}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="model">model</label>
+                    <input class="form-control" type="text" name="model" id="model" value="{{vant.model}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="type">type</label>
+                    <input class="form-control" type="text" name="type" id="type" value="{{vant.type}}">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="manufacturer">manufacturer</label>
+                    <input class="form-control" type="text" name="manufacturer" id="manufacturer" value="{{vant.manufacturer}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="comunication">comunication</label>
+                    <input class="form-control" type="text" name="comunication" id="comunication" value="{{vant.comunication}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="tecType">tecType</label>
+                    <input class="form-control" type="text" name="tecType" id="tecType" value="{{vant.tecType}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="tecAddress">tecAddress</label>
+                    <input class="form-control" type="text" name="tecAddress" id="tecAddress" value="{{vant.tecAddress}}">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" type="submit">Save</button>
+              <button class="btn btn-danger" onclick="window.history.back();">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="model">model</label>
-    <input type="text" name="model" id="model" value="{{vant.model}}">
-  </div>
-  <div>
-    <label for="type">type</label>
-    <input type="text" name="type" id="type" value="{{vant.type}}">
-  </div>
-  <div>
-    <label for="manufacturer">manufacturer</label>
-    <input type="text" name="manufacturer" id="manufacturer" value="{{vant.manufacturer}}">
-  </div>
-  <div>
-    <label for="comunication">comunication</label>
-    <input type="text" name="comunication" id="comunication" value="{{vant.comunication}}">
-  </div>
-  <div>
-    <label for="tecType">tecType</label>
-    <input type="text" name="tecType" id="tecType" value="{{vant.tecType}}">
-  </div>
-  <div>
-    <label for="tecAddress">tecAddress</label>
-    <input type="text" name="tecAddress" id="tecAddress" value="{{vant.tecAddress}}">
-  </div>
-  <input type="submit" value="Save">
-</form>
+</div>
+
