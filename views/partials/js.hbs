@@ -1,4 +1,24 @@
 <script src="/javascripts/jquery-3.3.1.min.js"></script>
+<script src="/plugins/datatables/jquery.dataTables.js"></script>
+<script src="/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="/javascripts/popper.min.js"></script>
 <script src="/javascripts/bootstrap.min.js"></script>
 <script src="/javascripts/adminlte.min.js"></script>
+<script>
+  $(function () {
+    $('#list').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+      "searching": true,
+      "ordering": false,
+      "info": true,
+      "autoWidth": true,
+      "columns": [
+        null,
+        null,
+        {"width": "5%"}
+      ]
+    });
+  });
+</script>
