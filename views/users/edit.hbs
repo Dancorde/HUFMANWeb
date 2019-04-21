@@ -1,20 +1,50 @@
-<form action="/users/{{user.id}}" method="post">
-  <div>
-    <label for="username">Username</label>
-    <input type="text" name="username" id="username" value="{{user.username}}">
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Users</h1>
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" value="{{user.password}}">
+</div>
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Edit user {{user.username}}</h3>
+          </div>
+          <form action="/users/{{user.id}}" method="post">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input class="form-control" type="text" name="username" id="username" value="{{user.username}}">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input class="form-control" type="password" name="password" id="password" value="{{user.password}}">
+              </div>
+              <div class="form-group">
+                <label for="role">Role</label>
+                <select class="form-control" name="role" id="role">
+                  <option value="Administrator" {{ ifEqual user.role "Administrator" "selected" "" }}>Administrator</option>
+                  <option value="Client" {{ ifEqual user.role "Client" "selected" "" }}>Client</option>
+                  <option value="Maintainer" {{ ifEqual user.role "Maintainer" "selected" "" }}>Maintainer</option>
+                  <option value="Planner" {{ ifEqual user.role "Planner" "selected" "" }}>Planner</option>
+                </select>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary" type="submit">Save</button>
+              {{!-- <a class="btn btn-danger" href="/users">Cancel</a> --}}
+              <button class="btn btn-danger" onclick="window.history.back();">Cancel</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
   </div>
-  <div>
-    <label for="role">Role</label>
-    <select name="role" id="role">
-      <option value="Administrator" {{ ifEqual user.role "Administrator" "selected" "" }}>Administrator</option>
-      <option value="Client" {{ ifEqual user.role "Client" "selected" "" }}>Client</option>
-      <option value="Maintainer" {{ ifEqual user.role "Maintainer" "selected" "" }}>Maintainer</option>
-      <option value="Planner" {{ ifEqual user.role "Planner" "selected" "" }}>Planner</option>
-    </select>
-  </div>
-  <input type="submit" value="Save">
-</form>
+</div>

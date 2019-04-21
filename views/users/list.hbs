@@ -10,35 +10,51 @@
 
 <div class="content">
   <div class="container-fluid">
-    <div class="card">
-      <div class="card-body">
-        <table>
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Role</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each users}}
-            <tr>
-              <td>{{this.username}}</td>
-              <td>{{this.password}}</td>
-              <td>{{this.role}}</td>
-              <td><a href="/users/{{this.id}}"><i class="fas fa-eye" aria-hidden="true"></i></a></td>
-              <td><a href="/users/{{this.id}}/edit"><i class="fas fa-edit" aria-hidden="true"></i></a></td>
-              <td><a href="/users/{{this.id}}/delete" data-confirm="Are you sure?"><i class="fas fa-trash"
-                    aria-hidden="true"></i></a></td>
-            </tr>
-            {{/each}}
-          </tbody>
-        </table>
-        
-        <br>
-        <a href="/users/new">New User</a>
-
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body table-responsive p-0">
+            <table class="table table-condensed table-hover">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  {{!-- <th>Password</th> --}}
+                  <th>Role</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each users}}
+                <tr>
+                  <td>{{this.username}}</td>
+                  {{!-- <td>{{this.password}}</td> --}}
+                  <td>{{this.role}}</td>
+                  <td>
+                    <div class="btn-group">
+                      <a class="btn btn-sm btn-primary" href="/users/{{this.id}}"><i class="fas fa-eye"
+                          aria-hidden="true"></i></a>
+                      <a class="btn btn-sm btn-warning" href="/users/{{this.id}}/edit"><i class="fas fa-edit"
+                          aria-hidden="true"></i></a>
+                      <a class="btn btn-sm btn-danger" href="/users/{{this.id}}/delete" onclick="return confirm('Are you sure?')"><i
+                          class="fas fa-trash" aria-hidden="true"></i></a>
+                    </div>
+                  </td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer clearfix">
+            <a class="btn btn-primary btn-sm" href="/users/new">New User</a>
+            <ul class="pagination pagination-sm m-0 float-right">
+              <li class="page-item"><a class="page-link btn btn-default btn-lg" href="#">«</a></li>
+              <li class="page-item"><a class="page-link btn btn-default btn-lg" href="#">1</a></li>
+              <li class="page-item"><a class="page-link btn btn-default btn-lg" href="#">2</a></li>
+              <li class="page-item"><a class="page-link btn btn-default btn-lg" href="#">3</a></li>
+              <li class="page-item"><a class="page-link btn btn-default btn-lg" href="#">»</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
