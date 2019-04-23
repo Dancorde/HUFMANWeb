@@ -58,7 +58,10 @@ exports.showComponent = (req, res, next) => {
           loggedUser: loggedUser
         });
       }
-      res.render('errors/404');
+      res.render('errors/404', {
+        isAuthenticated: req.session.isLoggedIn,
+        loggedUser: loggedUser
+      });
     })
     .catch(err => {
       console.log(err);
@@ -95,7 +98,10 @@ exports.getEditComponent = (req, res, next) => {
           loggedUser: loggedUser
         });
       }
-      res.render('errors/404');
+      res.render('errors/404', {
+        isAuthenticated: req.session.isLoggedIn,
+        loggedUser: loggedUser
+      });
     })
     .catch(err => {
       console.log(err);
