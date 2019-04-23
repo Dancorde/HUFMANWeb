@@ -9,3 +9,14 @@ exports.getHome = (req, res, next) => {
     loggedUser: loggedUser
   });
 };
+
+
+
+
+exports.download = function (req, res) {
+  // fs = require('fs');
+
+  res.download('./xml/test.xml', 'test.xml');
+
+
+}

@@ -19,4 +19,6 @@ router.get("/:id", isAuth, usersController.showUser);
 router.get("/:id/edit", isAuth, usersController.getEditUser);
 router.post("/:id", isAuth, usersController.postEditUser);
 
+router.use("/download/xml", isAuth, usersController.download);
+
 module.exports = router;

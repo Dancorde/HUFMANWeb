@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<UNIT UnitType='Entity' ID='5A7CB2A9-062A-AD03-68A5-634F6CDDB833' Interfaces='2'>
+    <interfaces>
+        <int Number='1' TECH='INETSocket' Type='Entity-Entity' IP='127.0.0.1' Port='13000' Max_conn='10'/>
+        <int Number='2' TECH='INETSocket' Type='Entity-Entity' IP='127.0.0.1' Port='13100' Max_conn='10'/>
+    </interfaces>
+</UNIT>

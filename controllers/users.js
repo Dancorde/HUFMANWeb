@@ -121,3 +121,44 @@ exports.postNewUser = (req, res, next) => {
     res.redirect("/");
   });
 };
+
+
+exports.download = function (req, res) {
+  const builder = require("xmlbuilder");
+  const fs = require('fs');
+
+  User.findAll({
+    order: ['username']
+  })
+    .then(users => {
+      const feed = builder.create('users', { encoding: 'utf-8' })
+      for (var i = 0; i < users.length; i++) {
+        var item = feed.ele('data');
+        item.att('username', users[i].username);
+        item.att('role', users[i].role);
+      }
+
+      console.log(feed.end({ pretty: true }));
+
+
+      fs.writeFileSync('test.xml', feed.end({ pretty: true }), function (err){
+        if(err){
+          return console.log(err);
+        }
+      });
+
+      res.download('./test.xml', () => {
+        fs.unlink('./test.xml', (err) => {
+          if (err) {
+            console.log(err);
+          }
+        });
+      });
+
+      // res.download('./xml/test.xml', 'test.xml');
+    })
+    .catch();
+  
+
+
+}
