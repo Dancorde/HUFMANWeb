@@ -71,7 +71,7 @@ exports.postEditUser = (req, res, next) => {
       return user.save();
     })
     .then(result => {
-      res.status(200).redirect('/users')
+      res.status(200).redirect('/users');
     })
     .catch(err => {
       console.log(err);
