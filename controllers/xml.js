@@ -6,12 +6,18 @@ var objCompCount = 0;
 var interfaces;
 var objects;
 var objInfo;
+var objInfoInt;
+var objInfoComp;
+var isCluster;
 
 exports.getStart = (req, res, next) => {
   const loggedUser = req.session.user;
   
   xml = builder.create("HUFMANWeb", { encoding: 'utf-8' })
-  xml = xml.ele("UNIT");  
+  xml = xml.ele("UNIT");
+
+  interfaceCount = 0;
+  objectCount = 0;
 
   res.render('xml/start', {
     pageTitle: "XML",
@@ -31,8 +37,11 @@ exports.postStart = (req, res, next) => {
   objects = xml.ele("Objects");
 
   if (centered == "TRUE") {
-    xml.up().ele("OPTIONS").att("CENTRALIZED", centered);
-    res.status(200).redirect('/xml/interfaces');
+    xml.up()
+      .ele("OPTIONS")
+      .att("CENTRALIZED", centered)
+      .att("KNOWN_FORMATION", "TRUE"); 
+    res.status(200).redirect('/xml/newXML');
   } else {
     res.status(200).redirect('/xml/newXML');
   }  
@@ -91,6 +100,12 @@ exports.postObjects = (req, res, next) => {
   objInfo.att('UnitType', unitType);
   objInfo.att('ID', unitId);
 
+  if (unitType == "Cluster"){
+    isCluster = true;
+  } else {
+    isCluster = false;
+  }
+
   objectCount++;
 
   res.status(200).redirect('/xml/objectConfig');
@@ -120,11 +135,15 @@ exports.postAddComponent = (req, res, next) => {
   const classification = req.body.classification;
   const emergencyState = req.body.emergencyState;
 
-  objInfo
-    .ele("Component")
+  objInfoComp = objInfo.ele("Component");
+
+  objInfoComp    
     .att('Classification', classification)
     .att('EmergencyState', emergencyState);
 
+    
+  objCompCount++;
+  objInfo.att('NumComponents', objCompCount);
 
   res.status(200).redirect('/xml/objectConfig');
 }
@@ -143,18 +162,13 @@ exports.postAddInterface = (req, res, next) => {
   const ip = req.body.ip;
   const port = req.body.port;
 
-  objInfo.ele('Interface')
-    .att('IP', ip)
-    .att('Port', port)
+  objInfoInt = objInfo.ele('Interface');
+
+  objInfoInt.att('IP', ip)
+    .att('Port', port);
 
   res.status(200).redirect('/xml/objectConfig');
 }
-
-
-
-
-
-
 
 exports.download = (req, res, next) => {
   const fs = require('fs');
