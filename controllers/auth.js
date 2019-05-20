@@ -5,9 +5,9 @@ exports.getLogin = (req, res, next) => {
   res.render("auth/login", {
     pageTitle: "Login",
     isAuthenticated: req.session.isLoggedIn,
-    errorMessage: req.flash('error'),
+    messages: req.flash(),
     layout: 'login'
-  });
+  });  
 };
 
 exports.postLogin = (req, res, next) => {

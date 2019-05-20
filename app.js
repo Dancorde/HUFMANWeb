@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const flash = require('connect-flash');
+const helpers = require('handlebars-helpers')();
 
 const app = express();
 

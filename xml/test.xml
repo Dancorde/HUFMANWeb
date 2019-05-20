@@ -1,7 +1,26 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<UNIT UnitType='Entity' ID='5A7CB2A9-062A-AD03-68A5-634F6CDDB833' Interfaces='2'>
+<UNIT UnitType="Entity" ID="5A7CB2A9-062A-AD03-68A5-634F6CDDB833" Interfaces="2">
     <interfaces>
-        <int Number='1' TECH='INETSocket' Type='Entity-Entity' IP='127.0.0.1' Port='13000' Max_conn='10'/>
-        <int Number='2' TECH='INETSocket' Type='Entity-Entity' IP='127.0.0.1' Port='13100' Max_conn='10'/>
+        <int Number="1" TECH="INETSocket" Type="Entity-Entity" IP="127.0.0.1" Port="13000" Max_conn="10"/>
+        <int Number="2" TECH="INETSocket" Type="Entity-Object" IP="127.0.0.1" Port="13100" Max_conn="10"/>
     </interfaces>
+    <Objects NumObjects="4">
+        <Object UnitType="Module" ID="7E0B077A-45CB-EB50-6D85-2B8F01345A0F">
+            <Interface Number="2" TECH="INETSocket" Type="Entity-Object" IPAddress="127.0.0.2" Port="13110"/>
+            <Component Number="1" FunctionalCode="1" Classification="REQUIRED" EmergencyState="1"/>
+        </Object>
+        <Object UnitType="Module" ID="29698953-50D0-A39F-275C-A7515E9D8CD2">
+            <Interface Number="2" TECH="INETSocket" Type="Entity-Object" IPAddress="127.0.0.3" Port="13120"/>
+            <Component Number="1" FunctionalCode="2" Classification="REQUIRED" EmergencyState="ON"/>
+        </Object>
+        <Object UnitType="Cluster" ID="782DF465-3254-BBC9-3A73-858C372A27DC" NumComponents="3">
+            <Interface Number="2" TECH="INETSocket" Type="Entity-Object" IPAddress="127.0.0.4" Port="13130"/>
+            <Component Number="1" FunctionalCode="5" Classification="REQUIRED" EmergencyState="ON"/>
+            <Component Number="2" FunctionalCode="6" Classification="REQUIRED" EmergencyState="ON"/>
+            <Component Number="3" FunctionalCode="7" Classification="MISSION_SPECIFIC" EmergencyState="OFF"/>
+        </Object>
+        <Object UnitType="Module" ID="35CC4ADD-6F0D-7CE8-797C-09B54DDE071B">
+            <Interface Number="2" TECH="INETSocket" Type="Entity-Object" IPAddress="127.0.0.5" Port="13140"/>
+            <Component Number="1" FunctionalCode="3" Classification="MISSION_SPECIFIC" EmergencyState="ON"/>
+        </Object>
+    </Objects>
 </UNIT>

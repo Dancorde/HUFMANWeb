@@ -15,12 +15,9 @@
 
   {{> sidebar}}
 
-  {{#if errorMessage}}
-  <div class="alert alert-danger" role="alert">
-    {{errorMessage}}
-  </div>
-  {{/if}}
+
   <div class="content-wrapper">
+  {{> messages}}
     {{{body}}}
   </div>
 

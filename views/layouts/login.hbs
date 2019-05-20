@@ -14,11 +14,7 @@
 </head>
 
 <body class="hold-transition login-page">
-  {{#if errorMessage}}
-  <div class="alert alert-danger" role="alert">
-    {{errorMessage}}
-  </div>
-  {{/if}}
+  {{> messages}}
 
   {{{body}}}
 

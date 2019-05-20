@@ -14,7 +14,7 @@ exports.getStart = (req, res, next) => {
   const loggedUser = req.session.user;
   
   xml = builder.create("HUFMANWeb", { encoding: 'utf-8' })
-  xml = xml.ele("UNIT");
+  
 
   interfaceCount = 0;
   objectCount = 0;
@@ -30,19 +30,29 @@ exports.postStart = (req, res, next) => {
   const unitId = req.body.unitId;
   const centered = req.body.centered;
 
-  xml.att('UnitType', "Entity");
-  xml.att('ID', unitId);
-  
-  interfaces = xml.ele('interfaces');
-  objects = xml.ele("Objects");
-
   if (centered == "TRUE") {
-    xml.up()
+    xml
       .ele("OPTIONS")
       .att("CENTRALIZED", centered)
-      .att("KNOWN_FORMATION", "TRUE"); 
+      .att("KNOWN_FORMATION", "TRUE");
+
+    xml = xml.ele("UNIT");
+
+    xml.att('UnitType', "Entity");
+    xml.att('ID', unitId);
+
+    interfaces = xml.ele('interfaces');
+    objects = xml.ele("Objects");
+
     res.status(200).redirect('/xml/newXML');
   } else {
+    xml = xml.ele("UNIT");
+    xml.att('UnitType', "Entity");
+    xml.att('ID', unitId);
+
+    interfaces = xml.ele('interfaces');
+    objects = xml.ele("Objects");
+
     res.status(200).redirect('/xml/newXML');
   }  
 };
@@ -63,6 +73,7 @@ exports.getInterfaces = (req, res, next) => {
   res.render('xml/interfaces', {
     pageTitle: "XML",
     isAuthenticated: req.session.isLoggedIn,
+    messages: req.flash(),
     loggedUser: loggedUser
   });
 };
@@ -78,6 +89,7 @@ exports.postInterfaces = (req, res, next) => {
     .att('Max_conn', maxConn);
 
   interfaceCount++;
+  req.flash('success', 'Iterface Added');
   res.status(200).redirect('/xml/interfaces');
 };
 
@@ -89,6 +101,7 @@ exports.getObjects = (req, res, next) => {
   res.render('xml/objects', {
     pageTitle: "XML",
     isAuthenticated: req.session.isLoggedIn,
+    messages: req.flash(),
     loggedUser: loggedUser
   });
 }
@@ -107,7 +120,7 @@ exports.postObjects = (req, res, next) => {
   }
 
   objectCount++;
-
+  req.flash('success', 'Object Created');
   res.status(200).redirect('/xml/objectConfig');
 }
 
@@ -117,6 +130,7 @@ exports.getObjectConfig = (req, res, next) => {
   res.render('xml/objectConfig', {
     pageTitle: "XML",
     isAuthenticated: req.session.isLoggedIn,
+    messages: req.flash(),
     loggedUser: loggedUser
   });
 }
@@ -127,6 +141,7 @@ exports.getAddComponent = (req, res, next) => {
   res.render('xml/addComponent', {
     pageTitle: "XML",
     isAuthenticated: req.session.isLoggedIn,
+    messages: req.flash(),
     loggedUser: loggedUser
   });
 }
@@ -145,6 +160,8 @@ exports.postAddComponent = (req, res, next) => {
   objCompCount++;
   objInfo.att('NumComponents', objCompCount);
 
+  req.flash('success', 'Component Added to Object');
+
   res.status(200).redirect('/xml/objectConfig');
 }
 
@@ -154,6 +171,7 @@ exports.getAddInterface = (req, res, next) => {
   res.render('xml/addInterface', {
     pageTitle: "XML",
     isAuthenticated: req.session.isLoggedIn,
+    messages: req.flash(),
     loggedUser: loggedUser
   });
 }
@@ -167,6 +185,8 @@ exports.postAddInterface = (req, res, next) => {
   objInfoInt.att('IP', ip)
     .att('Port', port);
 
+  req.flash('success', 'Interface Added to Object');
+  
   res.status(200).redirect('/xml/objectConfig');
 }
 
