@@ -113,6 +113,7 @@ exports.postObjects = (req, res, next) => {
   objInfo.att('UnitType', unitType);
   objInfo.att('ID', unitId);
 
+  objCompCount = 0;
   if (unitType == "Cluster"){
     isCluster = true;
   } else {
@@ -156,9 +157,10 @@ exports.postAddComponent = (req, res, next) => {
     .att('Classification', classification)
     .att('EmergencyState', emergencyState);
 
-    
-  objCompCount++;
-  objInfo.att('NumComponents', objCompCount);
+  if(isCluster){
+    objCompCount++;
+    objInfo.att('NumComponents', objCompCount);
+  }
 
   req.flash('success', 'Component Added to Object');
 

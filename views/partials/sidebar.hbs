@@ -14,6 +14,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="/xml" class="nav-link active">
+            <i class="nav-icon fa fa-clipboard"></i>
+            <p>
+              XML
+            </p>
+          </a>
+        </li>
         {{#if (eq loggedUser.role "Administrator")}}
           <li class="nav-item has-treeview {{ ifEqual pageTitle "Users" "menu-open" "" }}">
             <a href="/users" class="nav-link active">
