@@ -15,17 +15,30 @@
         <div class="card">
           <br>
           <div class="row text-center">
-            <div class="col-md-6">
+            {{#if isCentered}}
+              <div class="col-md-4">
+            {{else}}
+              <div class="col-md-6">
+            {{/if}}
               <a href="/xml/interfaces" class="btn btn-lg btn-primary">Add Interfaces</a>
             </div>
-            <div class="col-md-6">
+            {{#if isCentered}}
+              <div class="col-md-4">
+            {{else}}
+              <div class="col-md-6">
+            {{/if}}
               <a href="/xml/objects" class="btn btn-lg btn-primary">Add Objects</a>
             </div>
+            {{#if isCentered}}
+              <div class="col-md-4">
+                <a href="/xml/entity" class="btn btn-lg btn-primary">Add Super Entity</a>
+              </div>
+            {{/if}}
           </div>
           <br>
           <div class="row text-center">
             <div class="col-md-12">
-              <a href="/xml/download" class="btn btn-lg btn-primary">Download</a>
+              <a href="/xml/downloadConfig" class="btn btn-lg btn-primary">Download</a>
             </div>
           </div>
           <br>

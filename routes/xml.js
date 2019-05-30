@@ -4,7 +4,9 @@ const router = express.Router();
 const xmlController = require("../controllers/xml");
 
 router.get("/", xmlController.getStart);
-router.post("/", xmlController.postStart);
+
+router.get("/config", xmlController.getConfig);
+router.post("/config", xmlController.postConfig);
 
 router.get("/newXML", xmlController.getNewXML);
 
@@ -22,6 +24,12 @@ router.post("/addComponent", xmlController.postAddComponent);
 router.get("/addInterface", xmlController.getAddInterface);
 router.post("/addInterface", xmlController.postAddInterface);
 
-router.get("/download", xmlController.download);
+router.get("/entity", xmlController.getEntity);
+router.post("/entity", xmlController.postEntity);
+
+router.get("/downloadConfig", xmlController.downloadConfig);
+
+router.get("/mission", xmlController.getMission);
+router.post("/mission", xmlController.postMission);
 
 module.exports = router;
